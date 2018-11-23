@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <title>mvvm</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <h1>{{ name }}</h1>
+      <div class="article">
+        <h2>{{ title }}</h2>
+        <span>创建时间：{{ time }}</span>
+        <p>{{ content }}</p>
+      </div>
+    </div>
+    <script src="./main.js"></script>
+    <script>
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          name: '我的博客',
+          title: '第一篇博客',
+          time: '2018-12-10',
+          content: '今天发布了我的第一篇博客，非常开心。'
+        }
+      })
+      setTimeout(() => {
+        vm.title = '博客标题更改了'
+      }, 3000)
+      setTimeout(() => {
+        vm.content = '博客内容也更改了'
+      }, 6000)
+    </script>
+  </body>
+</html>
