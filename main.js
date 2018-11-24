@@ -39,7 +39,7 @@ function Compile(el, vm) {
     function replace(fragment) {
         const pattern = /\{\{(.*)\}\}/
         Array.from(fragment.childNodes).forEach(node => {
-            const text = node.textContent
+            let text = node.textContent
             if (node.nodeType === 3 && pattern.test(text)) {
                 const key = RegExp.$1.trim()
                 new Watcher(vm, key, (newVal) => {
@@ -82,6 +82,7 @@ function Watcher(vm, key, fn) {
     this.fn = fn
     Dep.target = this
 }
+
 Watcher.prototype.update = function() {
     this.fn(this.vm[this.key])
 }
